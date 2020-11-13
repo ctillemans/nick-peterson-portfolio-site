@@ -1,11 +1,9 @@
 import React from "react"
+import HeroWithText from "../components/HeroWithText"
+import homePageImage from "../../static/landing_placeholder.jpg"
 
 const index = () => {
-  return (
-    <div>
-      <h1>Nick Peterson Cuts</h1>
-    </div>
-  )
+  return <HeroWithText image={homePageImage} />
 }
 
 export default index
