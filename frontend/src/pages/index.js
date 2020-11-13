@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import HeroWithText from "../components/HeroWithText"
 import homePageImage from "../../static/landing_placeholder.jpg"
 

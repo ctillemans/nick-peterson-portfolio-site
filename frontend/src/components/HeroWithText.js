@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components"
-import { Link } from "gatsby"
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 const HeroFullWrapper = styled.div`
   margin: 0;
@@ -10,7 +10,7 @@ const HeroFullWrapper = styled.div`
   justify-content: center;
   width: 100vw;
   height: 95vh;
-  background: url(${props => props.image});
+  background: url(${(props) => props.image});
   background-size: cover;
   color: white;
   overflow: hidden;
@@ -34,24 +34,24 @@ const HeroFullWrapper = styled.div`
         margin
     }
   }
-`
+`;
 
 const HeroWithText = ({ image }) => {
   return (
     <HeroFullWrapper image={image}>
       <div>
-        <Link to="/">
+        <Link to='/about'>
           <h1>About</h1>
         </Link>
-        <Link to="/">
+        <Link to='/cuts'>
           <h1>Cuts</h1>
         </Link>
-        <Link to="/">
+        <Link to='/scheduler'>
           <h1>Schedule</h1>
         </Link>
       </div>
     </HeroFullWrapper>
-  )
-}
+  );
+};
 
-export default HeroWithText
+export default HeroWithText;
