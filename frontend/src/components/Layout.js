@@ -1,15 +1,18 @@
 import React from 'react';
 import 'normalize.css';
 import Typography from '../styles/Typography';
+import Navbar from './Navbar';
+import GlobalStyles from '../styles/GlobalStyles';
 
 const Layout = ({ children }) => {
   return (
     <>
-      <div>
+      <GlobalStyles>
         <Typography>
-          <div>{children}</div>
+          <Navbar />
+          {children}
         </Typography>
-      </div>
+      </GlobalStyles>
     </>
   );
 };

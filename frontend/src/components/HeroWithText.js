@@ -25,14 +25,10 @@ const HeroFullWrapper = styled.div`
     text-transform: uppercase;
   }
   div {
-      width: 50%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-
-    >*{
-        margin
-    }
   }
 `;
 
