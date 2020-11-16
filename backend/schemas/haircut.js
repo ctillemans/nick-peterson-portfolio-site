@@ -25,14 +25,6 @@ export default {
       options: {
         hotspot: true,
       },
-      fields: [
-        {
-          title: 'Image Description',
-          name: 'description',
-          type: 'string',
-          validation: (Rule) => Rule.max(50),
-        },
-      ],
     },
     {
       title: 'Date',
