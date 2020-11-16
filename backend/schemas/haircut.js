@@ -18,6 +18,7 @@ export default {
       type: 'string',
       validation: (Rule) => Rule.max(250),
     },
+    // TODO: change to array of images to make it more dynamic
     {
       title: 'Image 1',
       name: 'image1',
