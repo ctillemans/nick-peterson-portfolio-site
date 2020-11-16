@@ -9,7 +9,7 @@ const HeroFullWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 95vh;
+  height: 100vh;
   background: url(${(props) => props.image});
   background-size: cover;
   color: white;
@@ -25,14 +25,10 @@ const HeroFullWrapper = styled.div`
     text-transform: uppercase;
   }
   div {
-      width: 50%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-
-    >*{
-        margin
-    }
   }
 `;
 
