@@ -1,12 +1,13 @@
 import { graphql } from 'gatsby';
 import React from 'react';
+import CutsList from '../components/CutsList';
 
 export default function cuts({ data }) {
   console.log(data);
   return (
-    <div>
-      <h1>This is the cuts page</h1>
-    </div>
+    <>
+      <CutsList cuts={data.cuts} />
+    </>
   );
 }
 
@@ -20,8 +21,8 @@ export const cutsQuery = graphql`
         description
         image1 {
           asset {
-            fluid {
-              base64
+            fluid(maxWidth: 500) {
+              ...GatsbySanityImageFluid
             }
           }
         }
