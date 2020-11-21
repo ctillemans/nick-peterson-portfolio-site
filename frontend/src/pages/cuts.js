@@ -21,8 +21,12 @@ export const cutsQuery = graphql`
         description
         image1 {
           asset {
+            url
             fluid(maxWidth: 500) {
               ...GatsbySanityImageFluid
+            }
+            fixed {
+              ...GatsbySanityImageFixed
             }
           }
         }
