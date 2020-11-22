@@ -59,7 +59,7 @@ const HeroFullWrapper = styled.div`
 const HeroVideo = () => {
   return (
     <HeroFullWrapper>
-      <video src={video} muted='true' loop='loop' autoplay='true'></video>
+      <video src={video} muted loop='loop' autoPlay></video>
       <div>
         <Link to='/about'>
           <h1>About</h1>

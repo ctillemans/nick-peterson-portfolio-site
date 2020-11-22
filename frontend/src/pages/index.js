@@ -1,6 +1,4 @@
 import React from 'react';
-import HeroWithText from '../components/HeroWithText';
-import homePageImage from '../../static/landing_placeholder.jpg';
 import Logo from '../components/Logo';
 import styled from 'styled-components';
 import HeroVideo from '../components/HeroVideo';

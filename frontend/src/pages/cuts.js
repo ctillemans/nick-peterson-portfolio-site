@@ -1,9 +1,36 @@
-import React from "react"
+import { graphql } from 'gatsby';
+import React from 'react';
+import CutsList from '../components/CutsList';
 
-export default function cuts() {
+export default function cuts({ data }) {
+  console.log(data);
   return (
-    <div>
-      <h1>This is the cuts page</h1>
-    </div>
-  )
+    <>
+      <CutsList cuts={data.cuts} />
+    </>
+  );
 }
+
+// TODO: change schema to arrray of images to be more dynamic
+export const cutsQuery = graphql`
+  query cutsQuery {
+    cuts: allSanityHaircut {
+      nodes {
+        id
+        haircutTitle
+        description
+        image1 {
+          asset {
+            url
+            fluid(maxWidth: 500) {
+              ...GatsbySanityImageFluid
+            }
+            fixed {
+              ...GatsbySanityImageFixed
+            }
+          }
+        }
+      }
+    }
+  }
+`;
