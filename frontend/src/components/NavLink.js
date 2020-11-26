@@ -10,6 +10,11 @@ const NavLink = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 800px) {
+    h3 {
+      color: white;
+    }
+  }
   a {
     position: relative;
     color: black;

@@ -10,16 +10,26 @@ const NavContainer = styled.nav`
   height: 70px;
   background: white;
   margin: 0;
+  @media (max-width: 800px) {
+    border-bottom: 0.5px solid lightgray;
+  }
 `;
 
 const NavLinkList = styled.ul`
   margin: 0;
   list-style: none;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
   @media (max-width: 800px) {
-    display: none;
+    z-index: 100;
+    position: absolute;
+    flex-direction: column;
+    height: 100%;
+    top: 70px;
+    ${(props) => (props.mobile ? `left: 0` : `left: -100%`)};
+    width: 75vw;
+    background: black;
   }
 `;
 const NavLogo = styled(Logo)`
@@ -33,6 +43,18 @@ const NavLogo = styled(Logo)`
     }
   }
   @media (max-width: 800px) {
+    margin: 0 auto;
+    background: white;
+    & h1 {
+      color: black;
+    }
+    &:hover {
+      animation: fadein 0.3s;
+      background: black;
+      & h1 {
+        color: white;
+      }
+    }
   }
   @keyframes fadeout {
     from {
@@ -42,14 +64,26 @@ const NavLogo = styled(Logo)`
       background: white;
     }
   }
+  @keyframes fadein {
+    from {
+      background: white;
+    }
+    to {
+      background: black;
+    }
+  }
 `;
 
 export default function Navbar() {
+  const [mobileNav, setMobileNav] = useState(false);
   return (
     <>
       <NavContainer>
+        <div onClick={() => setMobileNav(!mobileNav)}>
+          <h3>X</h3>
+        </div>
         <NavLogo color='white' />
-        <NavLinkList>
+        <NavLinkList mobile={mobileNav}>
           <NavLink linkpage='' linkTitle='Home' />
           <NavLink linkpage='about' linkTitle='About' />
           <NavLink linkpage='cuts' linkTitle='Cuts' />
