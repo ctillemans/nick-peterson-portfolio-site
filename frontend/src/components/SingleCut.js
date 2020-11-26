@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import { useState, useEffect } from 'react';
+import { Link } from 'gatsby';
 
 const CutCardContainer = styled.div`
   margin: auto;
@@ -15,12 +15,12 @@ const CutCardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
   ${({ hovered }) =>
     hovered &&
     `
-    transform: scale(1.01);
-  `}
+    transform: scale(1.05);
+  `};
 `;
 const CutImageBackground = styled.img`
   height: 100%;
@@ -73,7 +73,7 @@ const CutContent = styled.div`
       visibility: visible;
   `}
   }
-  transition: all 0.5s;
+  transition: all 0.3s cubic-bezier(0.38, 0.41, 0.27, 1);
   /* #{$self}--hovered & {
       transform: translateY(20%);
       .card__desc {
@@ -95,24 +95,24 @@ const CutContent = styled.div`
 export default function SingleCut({ cut }) {
   const [isHovered, setHovered] = useState(false);
   return (
-    <CutCardContainer
-      className='card'
-      image={cut.image1.asset.fluid.src}
-      onMouseEnter={() => {
-        setHovered(true);
-        console.log('changed');
-      }}
-      onMouseLeave={() => {
-        setHovered(false);
-        console.log('changed');
-      }}
-      hovered={isHovered}
-    >
-      <CutImageBackground src={cut.image1.asset.url} hovered={isHovered} />
-      <CutContent className='card__Content' hovered={isHovered}>
-        <h1>{cut.haircutTitle}</h1>
-        <p>{cut.description}</p>
-      </CutContent>
-    </CutCardContainer>
+    <Link to={`/cut/${cut.id}`}>
+      <CutCardContainer
+        className='card'
+        image={cut.image1.asset.fluid.src}
+        onMouseEnter={() => {
+          setHovered(true);
+        }}
+        onMouseLeave={() => {
+          setHovered(false);
+        }}
+        hovered={isHovered}
+      >
+        <CutImageBackground src={cut.image1.asset.url} hovered={isHovered} />
+        <CutContent hovered={isHovered}>
+          <h1>{cut.haircutTitle}</h1>
+          <p>{cut.description}</p>
+        </CutContent>
+      </CutCardContainer>
+    </Link>
   );
 }

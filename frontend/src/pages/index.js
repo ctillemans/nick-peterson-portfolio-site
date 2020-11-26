@@ -4,18 +4,19 @@ import styled from 'styled-components';
 import HeroVideo from '../components/HeroVideo';
 
 const LogoHomePage = styled(Logo)`
-  margin-top: 2rem;
+  height: 50px;
+  margin-top: 1rem;
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   &:after {
     content: '';
-    width: 100vw;
+    width: 80vw;
     height: 1px;
     background: white;
     position: absolute;
-    margin-top: 2rem;
+    margin-top: 1rem;
     top: 100%;
   }
 `;

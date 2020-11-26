@@ -1,15 +1,14 @@
 import React from 'react';
 import 'normalize.css';
 import Typography from '../styles/Typography';
-
-const Layout = ({ children }) => {
+import NavBar from './NavBar';
+const Layout = ({ children, ...props }) => {
   return (
     <>
-      <div>
-        <Typography>
-          <div>{children}</div>
-        </Typography>
-      </div>
+      <Typography>
+        {props.location.pathname !== '/' && <NavBar />}
+        <div>{children}</div>
+      </Typography>
     </>
   );
 };

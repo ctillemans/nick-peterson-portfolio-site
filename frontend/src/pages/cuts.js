@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import CutsList from '../components/CutsList';
+import Layout from '../components/Layout';
 
 export default function cuts({ data }) {
   console.log(data);
