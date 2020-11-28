@@ -141,13 +141,13 @@ const SocialLinks = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  & a {
+  > * {
     height: 33%;
     width: auto;
     padding: 1rem;
   }
   @media (max-width: 800) {
-    & a {
+    > * {
       height: 100%;
       width: auto;
       padding: 0.5rem;
@@ -160,6 +160,10 @@ export default function Navbar() {
   const toggleMobileNav = () => {
     setMobileNav(!mobileNav);
   };
+  const handleLinkClick = (target, e) => {
+    console.log(e);
+    toggleMobileNav();
+  };
   return (
     <>
       <NavContainer>
@@ -170,7 +174,11 @@ export default function Navbar() {
         </Hamburger>
         <NavLogo color='white' />
         <NavLinkList mobile={mobileNav}>
-          <NavLink linkpage='' linkTitle='Home' onClick={toggleMobileNav} />
+          <NavLink
+            linkpage=''
+            linkTitle='Home'
+            handleLinkClick={handleLinkClick}
+          />
           <NavLink
             linkpage='about'
             linkTitle='About'
@@ -184,15 +192,9 @@ export default function Navbar() {
           />
         </NavLinkList>
         <SocialLinks>
-          <a href='#'>
-            <FaInstagram />
-          </a>
-          <a href='#'>
-            <FaStrava />
-          </a>
-          <a href='#'>
-            <FaTwitter />
-          </a>
+          <FaInstagram />
+          <FaStrava />
+          <FaTwitter />
         </SocialLinks>
       </NavContainer>
     </>

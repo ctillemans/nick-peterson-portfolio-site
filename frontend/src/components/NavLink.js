@@ -73,7 +73,7 @@ const NavLink = styled.li`
   }
 `;
 
-export default function Navlink({ linkpage, linkTitle, onCLick }) {
+export default function Navlink({ linkpage, linkTitle, handleLinkClick }) {
   const [isHovered, setHovered] = useState(false);
   return (
     <NavLink
@@ -85,7 +85,7 @@ export default function Navlink({ linkpage, linkTitle, onCLick }) {
         setHovered(false);
       }}
     >
-      <Link to={`/${linkpage}`}>
+      <Link to={`/${linkpage}`} onClick={(e) => handleLinkClick(linkpage, e)}>
         <h3>{linkTitle}</h3>
       </Link>
     </NavLink>
