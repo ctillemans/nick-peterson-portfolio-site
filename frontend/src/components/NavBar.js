@@ -4,8 +4,58 @@ import styled from 'styled-components';
 import Logo from './Logo';
 import { useState } from 'react';
 import NavLink from './NavLink';
+import { FaInstagram, FaYoutube, FaStrava, FaTwitter } from 'react-icons/fa';
+
+const Hamburger = styled.div`
+  position: relative;
+  margin: auto 0;
+  margin-left: 1rem;
+  height: 33%;
+  width: 30px;
+  display: none;
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: black;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  & :nth-child(1) {
+    top: 0%;
+  }
+  & :nth-child(2) {
+    top: 50%;
+  }
+  & :nth-child(3) {
+    top: 100%;
+  }
+  @media (max-width: 800px) {
+    display: block;
+  }
+
+  ${(props) =>
+    props.mobile
+      ? `
+  & :nth-child(1) {
+    top: 50%;
+    transform: rotate(45deg);
+  }
+  & :nth-child(2) {
+   display: none;
+  }
+  & :nth-child(3) {
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+  `
+      : ``};
+`;
 
 const NavContainer = styled.nav`
+  position: relative;
   display: flex;
   height: 70px;
   background: white;
@@ -16,16 +66,21 @@ const NavContainer = styled.nav`
 `;
 
 const NavLinkList = styled.ul`
+  padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   @media (max-width: 800px) {
     z-index: 100;
     position: absolute;
+    left: 0;
     flex-direction: column;
-    height: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    height: calc(100vh - 70px);
     top: 70px;
     ${(props) => (props.mobile ? `left: 0` : `left: -100%`)};
     width: 75vw;
@@ -33,6 +88,7 @@ const NavLinkList = styled.ul`
   }
 `;
 const NavLogo = styled(Logo)`
+  position: relative;
   background: black;
   width: 75px;
   &:hover {
@@ -43,6 +99,10 @@ const NavLogo = styled(Logo)`
     }
   }
   @media (max-width: 800px) {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0 auto;
     background: white;
     & h1 {
@@ -73,22 +133,67 @@ const NavLogo = styled(Logo)`
     }
   }
 `;
+const SocialLinks = styled.div`
+  margin-left: auto;
+  margin-right: 1rem;
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & a {
+    height: 33%;
+    width: auto;
+    padding: 1rem;
+  }
+  @media (max-width: 800) {
+    & a {
+      height: 100%;
+      width: auto;
+      padding: 0.5rem;
+    }
+  }
+`;
 
 export default function Navbar() {
   const [mobileNav, setMobileNav] = useState(false);
+  const toggleMobileNav = () => {
+    setMobileNav(!mobileNav);
+  };
   return (
     <>
       <NavContainer>
-        <div onClick={() => setMobileNav(!mobileNav)}>
-          <h3>X</h3>
-        </div>
+        <Hamburger mobile={mobileNav} onClick={toggleMobileNav}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </Hamburger>
         <NavLogo color='white' />
         <NavLinkList mobile={mobileNav}>
-          <NavLink linkpage='' linkTitle='Home' />
-          <NavLink linkpage='about' linkTitle='About' />
-          <NavLink linkpage='cuts' linkTitle='Cuts' />
-          <NavLink linkpage='scheduler' linkTitle='Schedule' />
+          <NavLink linkpage='' linkTitle='Home' onClick={toggleMobileNav} />
+          <NavLink
+            linkpage='about'
+            linkTitle='About'
+            onClick={toggleMobileNav}
+          />
+          <NavLink linkpage='cuts' linkTitle='Cuts' onClick={toggleMobileNav} />
+          <NavLink
+            linkpage='scheduler'
+            linkTitle='Schedule'
+            onClick={toggleMobileNav}
+          />
         </NavLinkList>
+        <SocialLinks>
+          <a href='#'>
+            <FaInstagram />
+          </a>
+          <a href='#'>
+            <FaStrava />
+          </a>
+          <a href='#'>
+            <FaTwitter />
+          </a>
+        </SocialLinks>
       </NavContainer>
     </>
   );

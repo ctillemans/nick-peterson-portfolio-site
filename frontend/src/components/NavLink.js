@@ -6,15 +6,10 @@ import { Link } from 'gatsby';
 const NavLink = styled.li`
   height: 100%;
   overflow: hidden;
-  margin: 0 2rem;
+  margin: 0 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 800px) {
-    h3 {
-      color: white;
-    }
-  }
   a {
     position: relative;
     color: black;
@@ -49,6 +44,17 @@ const NavLink = styled.li`
     }
     /* transition: all 0.3s cubic-bezier(0.38, 0.41, 0.27, 1); */
   }
+  @media (max-width: 800px) {
+    a {
+      color: white;
+      h3 {
+        font-size: 5rem;
+      }
+      &:after {
+        background: white;
+      }
+    }
+  }
   @keyframes slidein {
     from {
       transform: translateX(-100%);
@@ -67,7 +73,7 @@ const NavLink = styled.li`
   }
 `;
 
-export default function Navlink({ linkpage, linkTitle }) {
+export default function Navlink({ linkpage, linkTitle, onCLick }) {
   const [isHovered, setHovered] = useState(false);
   return (
     <NavLink

@@ -10,7 +10,7 @@ const CutCardContainer = styled.div`
   width: 400px;
   max-width: 400px;
   height: 400px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   display: flex;
   flex-direction: column;
   align-items: center;
