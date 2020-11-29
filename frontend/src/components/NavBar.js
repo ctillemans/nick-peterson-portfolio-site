@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { navigate } from 'gatsby';
 import styled from 'styled-components';
 import Logo from './Logo';
 import { useState } from 'react';
@@ -161,8 +161,9 @@ export default function Navbar() {
     setMobileNav(!mobileNav);
   };
   const handleLinkClick = (target, e) => {
-    console.log(e);
+    e.preventDefault();
     toggleMobileNav();
+    navigate(`/${target}`);
   };
   return (
     <>
@@ -182,13 +183,17 @@ export default function Navbar() {
           <NavLink
             linkpage='about'
             linkTitle='About'
-            onClick={toggleMobileNav}
+            handleLinkClick={handleLinkClick}
           />
-          <NavLink linkpage='cuts' linkTitle='Cuts' onClick={toggleMobileNav} />
+          <NavLink
+            linkpage='cuts'
+            linkTitle='Cuts'
+            handleLinkClick={handleLinkClick}
+          />
           <NavLink
             linkpage='scheduler'
             linkTitle='Schedule'
-            onClick={toggleMobileNav}
+            handleLinkClick={handleLinkClick}
           />
         </NavLinkList>
         <SocialLinks>
