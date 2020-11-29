@@ -12,7 +12,7 @@ const LogoHomePage = styled(Logo)`
   transform: translateX(-50%);
   &:after {
     content: '';
-    width: 80vw;
+    width: 100vw;
     height: 1px;
     background: white;
     position: absolute;
