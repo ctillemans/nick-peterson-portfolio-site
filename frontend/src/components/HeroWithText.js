@@ -9,9 +9,10 @@ const HeroFullWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   background: url(${(props) => props.image});
   background-size: cover;
+  background-position: center;
   color: white;
   overflow: hidden;
   img {
@@ -20,15 +21,12 @@ const HeroFullWrapper = styled.div`
   h1 {
     color: white;
   }
-  a {
-    text-decoration: none;
-    text-transform: uppercase;
-  }
   div {
     width: 50%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
   }
 `;
 
@@ -36,15 +34,8 @@ const HeroWithText = ({ image }) => {
   return (
     <HeroFullWrapper image={image}>
       <div>
-        <Link to='/about'>
-          <h1>About</h1>
-        </Link>
-        <Link to='/cuts'>
-          <h1>Cuts</h1>
-        </Link>
-        <Link to='/scheduler'>
-          <h1>Schedule</h1>
-        </Link>
+        <h1>Nick Petersen</h1>
+        <p>Barber | Cyclist | Entrepreneur</p>
       </div>
     </HeroFullWrapper>
   );

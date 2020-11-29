@@ -1,9 +1,11 @@
-import React from "react"
+import React from 'react';
+import HeroWithText from '../components/HeroWithText';
+import portrait from '../../static/assets/portrait.png';
 
 export default function about() {
   return (
-    <div>
-      <h1>About Me Page</h1>
-    </div>
-  )
+    <section>
+      <HeroWithText image={portrait} />
+    </section>
+  );
 }

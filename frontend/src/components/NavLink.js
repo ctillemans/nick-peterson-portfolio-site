@@ -85,7 +85,10 @@ export default function Navlink({ linkpage, linkTitle, handleLinkClick }) {
         setHovered(false);
       }}
     >
-      <Link to={`/${linkpage}`} onClick={(e) => handleLinkClick(linkpage, e)}>
+      <Link
+        to={`/${linkpage}`}
+        onClick={(event) => handleLinkClick(linkpage, event)}
+      >
         <h3>{linkTitle}</h3>
       </Link>
     </NavLink>

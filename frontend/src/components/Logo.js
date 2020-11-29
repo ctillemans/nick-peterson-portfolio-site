@@ -26,7 +26,7 @@ const Logotext = styled.div`
 export default function Logo({ className, color }) {
   return (
     <LogoContainer className={className}>
-      <Link to='/about'>
+      <Link to='/'>
         <Logotext color={color}>
           <h1>NP</h1>
         </Logotext>
