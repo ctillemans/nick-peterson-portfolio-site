@@ -23,13 +23,13 @@ const TextBlock = styled.div`
   }
   @media (max-width: 1200px) {
     padding: 2rem;
-    height: 75vh;
+    height: auto;
     width: 50vw;
     p {
       font-size: 2rem;
     }
   }
-  @media (max-width: 800px) {
+  @media (max-width: 600px) {
     padding: 2rem;
     height: auto;
     width: 75vw;
@@ -47,6 +47,11 @@ const HalfHeroContainer = styled.div`
   margin: 0;
   padding: 0;
   overflow: hidden;
+  @media (max-width: 600px) {
+    height: 1000px;
+    min-height: 500px;
+    flex-direction: column;
+  }
 `;
 
 const HalfHeroImg = styled.div`
@@ -55,7 +60,14 @@ const HalfHeroImg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;
-  width: 50vw;
+  width: auto;
+  min-width: 50vw;
+  @media (max-width: 800px) {
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+    flex-direction: column;
+  }
 `;
 export default function about() {
   return (
