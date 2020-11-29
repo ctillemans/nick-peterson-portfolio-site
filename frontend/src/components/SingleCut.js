@@ -26,7 +26,7 @@ const CutImageBackground = styled.img`
   height: 100%;
   min-width: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center;
   ${({ hovered }) =>
     hovered &&
     `

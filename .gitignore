@@ -4,4 +4,9 @@ node_modules/
 
 .env
 *.mp4
+.jpg
+.jpeg
+.png
 
+frontend/static/assets/portrait.png
+backend/package-lock.json

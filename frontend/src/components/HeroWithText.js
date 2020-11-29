@@ -9,7 +9,7 @@ const HeroFullWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 80vh;
+  height: ${(props) => `${props.height}vh`};
   background: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
@@ -30,12 +30,12 @@ const HeroFullWrapper = styled.div`
   }
 `;
 
-const HeroWithText = ({ image }) => {
+const HeroWithText = ({ image, title, subtitle, height = 100 }) => {
   return (
-    <HeroFullWrapper image={image}>
+    <HeroFullWrapper image={image} height={height}>
       <div>
-        <h1>Nick Petersen</h1>
-        <p>Barber | Cyclist | Entrepreneur</p>
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
       </div>
     </HeroFullWrapper>
   );
