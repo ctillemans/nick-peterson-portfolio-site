@@ -85,10 +85,10 @@ export default function about() {
             "Nick Petersen, the Angry Barber, was born and raised in Southern
             California. With his appreciation for classic style and detail
             oriented mind, he found a passion for cutting hair. Upon graduating
-            from the Paul Mitchell Barber School while working two other jobs,
-            he is now able to fully pursue what he loves the most. When he isn't
-            cutting hair, you might find him at a local coffee shop or cycling
-            in the streets."
+            from The Barbering Program while working two other jobs, he is now
+            able to fully pursue what he loves the most. When he isn't cutting
+            hair, you might find him at a local coffee shop or cycling in the
+            streets."
           </p>
         </TextBlock>
       </AnimateIn>
@@ -99,7 +99,11 @@ export default function about() {
         </HalfHeroContainer>
       </AnimateIn>
       <AnimateIn>
-        <HeroWithText height='80' image={environmental1} />
+        <HeroWithText
+          height='80'
+          image={environmental1}
+          title='Testimonials carousel'
+        />
       </AnimateIn>
       <AnimateIn>
         <HalfHeroContainer>

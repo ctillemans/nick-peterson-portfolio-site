@@ -95,7 +95,7 @@ const CutContent = styled.div`
 export default function SingleCut({ cut }) {
   const [isHovered, setHovered] = useState(false);
   return (
-    <Link to={`/cut/${cut.id}`}>
+    <Link to={`/${cut.haircutTitle}`}>
       <CutCardContainer
         className='card'
         image={cut.image1.asset.fluid.src}
