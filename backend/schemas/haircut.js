@@ -47,6 +47,25 @@ export default {
       type: 'string',
       validation: (Rule) => Rule.max(250),
     },
+    // TODO: make this an array of custom documents so that one of the
+    // images can be the default image. THis might not be necasary with just more
+    // restrictions on array ordering and clarity for the client to
+    // upload in a particular way.
+    {
+      title: 'Haircut Images',
+      name: 'haircutImages',
+      type: 'array',
+      description: 'Add haircut images',
+      maxLength: 4,
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    },
     // TODO: change to array of images to make it more dynamic
     {
       title: 'Image 1',
