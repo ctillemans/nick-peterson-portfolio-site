@@ -9,12 +9,12 @@ function asyncSlugify(input, type) {
   console.log(slug);
 
   const query =
-    'count(*[_type=="haircut" && haircutSlug.current == $slug]{_id, haircutTitle})';
+    'count(*[_type=="haircut" && haircutTitle == $slug]{_id, haircutTitle})';
   const params = { slug: slug };
   return sanityClient.fetch(query, params).then((count) => {
     console.log(`people with same slug: ${count}`);
 
-    return count >= 1 ? `${slug}-${count + 1}` : slug;
+    return count > 1 ? `${slug}-${count - 1}` : slug;
   });
   // search all slugs
   //make it unique by adding the count to the end
