@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroWithText from '../components/HeroWithText';
+
 import portrait from '../../static/assets/portrait.png';
 import styled from 'styled-components';
 import AnimateIn from '../components/AnimateIn';
@@ -8,6 +9,7 @@ import cutImage2 from '../../static/assets/about2.jpeg';
 import riding1 from '../../static/assets/riding1.jpeg';
 import riding2 from '../../static/assets/riding2.jpeg';
 import environmental1 from '../../static/assets/environmental1.jpeg';
+import TextCarousel from '../components/Carousel/TextCarousel';
 const TextBlock = styled.div`
   height: 50vh;
   min-height: 300px;
@@ -98,12 +100,9 @@ export default function about() {
           <HalfHeroImg image={riding1} />
         </HalfHeroContainer>
       </AnimateIn>
+
       <AnimateIn>
-        <HeroWithText
-          height='80'
-          image={environmental1}
-          title='Testimonials carousel'
-        />
+        <TextCarousel />
       </AnimateIn>
       <AnimateIn>
         <HalfHeroContainer>
