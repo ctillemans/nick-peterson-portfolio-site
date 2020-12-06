@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import bg from '../../../static/assets/environmental1.jpeg';
 import Arrow from './Arrow';
+import DotNav from './DotNav';
 import Slide from './Slide';
 import Slides from './Slides';
 
@@ -93,6 +94,7 @@ export default function TextCarousel({}) {
           );
         })}
       </Slides>
+      <DotNav slides={testimonials} activeIndex={activeIndex} />
       <Arrow direction='right' handleClick={nextSlide} />
       <Arrow direction='left' handleClick={prevSlide} />
     </CarouselStyles>
