@@ -21,11 +21,10 @@ const Dot = styled.div`
 `;
 
 export default function DotNav({ slides, activeIndex }) {
-  console.log(`active: ${activeIndex}`);
   return (
     <DotContainer>
       {slides.map((slide, i) => (
-        <Dot key={slide.name - i} active={activeIndex === i}></Dot>
+        <Dot key={i} active={activeIndex === i}></Dot>
       ))}
     </DotContainer>
   );
