@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import bg from '../../../static/assets/environmental1.jpeg';
 import Arrow from './Arrow';
+import DotNav from './DotNav';
 import Slide from './Slide';
 import Slides from './Slides';
 
@@ -32,58 +33,101 @@ const CarouselStyles = styled.div`
   transition: all 2s ease-in;
 `;
 
-export default function TextCarousel({}) {
+export default function TextCarousel() {
   const getWidth = () => window.innerWidth;
+
+  let lastSlide = testimonials[testimonials.length - 1];
+  let firstSlide = testimonials[0];
+  let secondSlide = testimonials[1];
+
   const [state, setState] = useState({
-    translate: 0,
+    translate: getWidth(),
     transition: 500,
     activeIndex: 0,
+    activeSlides: [lastSlide, firstSlide, secondSlide],
+  });
+  const { translate, transition, activeIndex, activeSlides } = state;
+
+  const transitionRef = useRef();
+
+  useEffect(() => {
+    transitionRef.current = slideTransition;
   });
 
-  const { translate, transition, activeIndex } = state;
-  const prevSlide = (event) => {
-    console.log(event.currentTarget);
-    // determine if it is the first slide
-    if (activeIndex === 0) {
-      return setState({
-        ...state,
-        activeIndex: testimonials.length - 1,
-        translate: (testimonials.length - 1) * getWidth(),
-      });
-    }
+  useEffect(() => {
+    const transitionToActiveSlides = () => {
+      transitionRef.current();
+    };
+    const transitionEnd = window.addEventListener(
+      'transitionend',
+      transitionToActiveSlides
+    );
+    return () => {
+      window.removeEventListener('transitionend', transitionEnd);
+    };
+  }, []);
+  useEffect(() => {
+    if (transition === 0) setState({ ...state, transition: 500 });
+  }, [transition]);
+
+  const slideTransition = () => {
+    let activeSlides = [];
+
+    // first
+    if (activeIndex === 0)
+      activeSlides = [
+        testimonials[testimonials.length - 1],
+        testimonials[0],
+        testimonials[1],
+      ];
+    // last
+    else if (activeIndex === testimonials.length - 1)
+      activeSlides = [
+        testimonials[testimonials.length - 2],
+        testimonials[testimonials.length - 1],
+        testimonials[0],
+      ];
+    else
+      activeSlides = [
+        testimonials[activeIndex - 1],
+        testimonials[activeIndex],
+        testimonials[activeIndex + 1],
+      ];
+    // any others
+    // redefine active slides array
+    // setState to new slides and transition: 0;
+
     setState({
       ...state,
-      activeIndex: activeIndex - 1,
-      translate: (activeIndex - 1) * getWidth(),
+      transition: 0,
+      translate: getWidth(),
+      activeSlides,
     });
-    console.log(activeIndex);
-    console.log(translate);
+  };
 
-    // else transform 100% to the right
+  const prevSlide = (event) => {
+    setState({
+      ...state,
+      translate: 0,
+      activeIndex:
+        activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1,
+    });
   };
   const nextSlide = () => {
-    // determine if it is the last slide
-    if (activeIndex === testimonials.length - 1) {
-      return setState({
-        ...state,
-        activeIndex: 0,
-        translate: 0,
-      });
-    }
     setState({
       ...state,
-      activeIndex: activeIndex + 1,
-      translate: (activeIndex + 1) * getWidth(),
+      translate: translate + getWidth(),
+      activeIndex:
+        activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1,
     });
-    // else change transform to move 100%left;
   };
 
   // Runs after the first render() lifecycle
 
   return (
     <CarouselStyles image={bg}>
-      <Slides translate={translate} transition={transition} width={getWidth}>
-        {testimonials.map((testimonial, i) => {
+      <Slides translate={translate} transition={transition} width={getWidth()}>
+        {activeSlides.map((testimonial, i) => {
           return (
             <Slide
               key={`slide ` + i}
@@ -93,6 +137,7 @@ export default function TextCarousel({}) {
           );
         })}
       </Slides>
+      <DotNav slides={testimonials} activeIndex={activeIndex} />
       <Arrow direction='right' handleClick={nextSlide} />
       <Arrow direction='left' handleClick={prevSlide} />
     </CarouselStyles>

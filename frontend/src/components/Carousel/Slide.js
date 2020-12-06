@@ -11,33 +11,11 @@ const SlideStyles = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  transition: all ease-in-out 2s;
-  ${(props) =>
-    props.active &&
-    `
-        animation: fadeIn 2s;
-        `}
 
   h2 {
     color: white;
     font-weight: 200;
     font-size: 2rem;
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
   }
 `;
 

@@ -14,7 +14,7 @@ const ArrowStyles = styled.div`
   border-radius: 50%;
   cursor: pointer;
   align-items: center;
-  transition: transform ease-in 0.1s;
+  /* transition: transform ease-in 0.1s; */
   &:hover {
     transform: scale(1.1);
   }
