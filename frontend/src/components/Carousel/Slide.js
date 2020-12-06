@@ -11,7 +11,6 @@ const SlideStyles = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-
   h2 {
     color: white;
     font-weight: 200;

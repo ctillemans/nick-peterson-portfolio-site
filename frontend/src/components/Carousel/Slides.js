@@ -5,7 +5,7 @@ const Slides = styled.div`
   height: 100%;
   width: ${(props) => props.width}px;
   display: flex;
-  transition: transform ${(props) => props.transition}ms;
+  transition: transform ease-in-out ${(props) => props.transition}ms;
 `;
 
 export default Slides;

@@ -30,7 +30,6 @@ const CarouselStyles = styled.div`
   width: 100vw;
   margin: 0 auto;
   overflow: hidden;
-  transition: all 2s ease-in;
 `;
 
 export default function TextCarousel() {
@@ -42,32 +41,38 @@ export default function TextCarousel() {
 
   const [state, setState] = useState({
     translate: getWidth(),
-    transition: 500,
+    transition: 1000,
     activeIndex: 0,
     activeSlides: [lastSlide, firstSlide, secondSlide],
   });
   const { translate, transition, activeIndex, activeSlides } = state;
 
   const transitionRef = useRef();
+  const autoPlayRef = useRef();
 
   useEffect(() => {
     transitionRef.current = slideTransition;
+    autoPlayRef.current = nextSlide;
   });
 
   useEffect(() => {
     const transitionToActiveSlides = () => {
       transitionRef.current();
     };
+    const autoPlay = () => {
+      autoPlayRef.current();
+    };
     const transitionEnd = window.addEventListener(
       'transitionend',
       transitionToActiveSlides
     );
+    const interval = setInterval(autoPlay, 5000);
     return () => {
       window.removeEventListener('transitionend', transitionEnd);
     };
   }, []);
   useEffect(() => {
-    if (transition === 0) setState({ ...state, transition: 500 });
+    if (transition === 0) setState({ ...state, transition: 2000 });
   }, [transition]);
 
   const slideTransition = () => {
