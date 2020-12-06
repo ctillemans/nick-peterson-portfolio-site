@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroWithText from '../components/HeroWithText';
+
 import portrait from '../../static/assets/portrait.png';
 import styled from 'styled-components';
 import AnimateIn from '../components/AnimateIn';
@@ -8,6 +9,7 @@ import cutImage2 from '../../static/assets/about2.jpeg';
 import riding1 from '../../static/assets/riding1.jpeg';
 import riding2 from '../../static/assets/riding2.jpeg';
 import environmental1 from '../../static/assets/environmental1.jpeg';
+import TextCarousel from '../components/Carousel/TextCarousel';
 const TextBlock = styled.div`
   height: 50vh;
   min-height: 300px;
@@ -85,10 +87,10 @@ export default function about() {
             "Nick Petersen, the Angry Barber, was born and raised in Southern
             California. With his appreciation for classic style and detail
             oriented mind, he found a passion for cutting hair. Upon graduating
-            from the Paul Mitchell Barber School while working two other jobs,
-            he is now able to fully pursue what he loves the most. When he isn't
-            cutting hair, you might find him at a local coffee shop or cycling
-            in the streets."
+            from The Barbering Program while working two other jobs, he is now
+            able to fully pursue what he loves the most. When he isn't cutting
+            hair, you might find him at a local coffee shop or cycling in the
+            streets."
           </p>
         </TextBlock>
       </AnimateIn>
@@ -98,8 +100,9 @@ export default function about() {
           <HalfHeroImg image={riding1} />
         </HalfHeroContainer>
       </AnimateIn>
+
       <AnimateIn>
-        <HeroWithText height='80' image={environmental1} />
+        <TextCarousel />
       </AnimateIn>
       <AnimateIn>
         <HalfHeroContainer>
