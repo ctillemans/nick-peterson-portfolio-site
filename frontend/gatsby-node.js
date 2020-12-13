@@ -22,7 +22,7 @@ async function turnHaircutsIntoPages({ graphql, actions }) {
   // figure out the number of pages we need;
   numberOfCuts = data.cuts.nodes.length;
 
-  paginationSize = parseInt(process.env.PAGE_SIZE);
+  paginationSize = parseInt(process.env.GATSBY_PAGE_SIZE);
 
   console.log(
     `number of Cuts: ${numberOfCuts} size of pagination: ${paginationSize}`
