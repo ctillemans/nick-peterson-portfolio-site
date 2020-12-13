@@ -66,21 +66,78 @@ export default {
         },
       ],
     },
-    // TODO: change to array of images to make it more dynamic
-    {
-      title: 'Image 1',
-      name: 'image1',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
     {
       title: 'Date',
       name: 'date',
       type: 'date',
       options: {
         calendarTodayLabel: true,
+      },
+    },
+    {
+      title: 'HairType',
+      name: 'hairType',
+      type: 'string',
+      description: 'Type of hair:',
+      options: {
+        list: [
+          {
+            title: 'Straight',
+            value: 'Straight',
+          },
+          {
+            title: 'Wavy',
+            value: 'Wavy',
+          },
+          {
+            title: 'Curly',
+            value: 'Curly',
+          },
+          {
+            title: 'Kinky',
+            value: 'Kinky',
+          },
+        ],
+      },
+    },
+    {
+      title: 'Hair Thickness',
+      name: 'hair_thickness',
+      type: 'string',
+      description: 'Thickness of hair:',
+      options: {
+        list: [
+          {
+            title: 'Thin',
+            value: 'Thin',
+          },
+          {
+            title: 'Average',
+            value: 'Average',
+          },
+          {
+            title: 'Thick',
+            value: 'Thick',
+          },
+        ],
+      },
+    },
+    {
+      title: 'Head Shape',
+      name: 'head_shape',
+      type: 'string',
+      description: 'Shape of head:',
+      options: {
+        list: [
+          { title: 'Heart', value: 'Heart' },
+          { title: 'Square', value: 'Square' },
+          { title: 'Pear', value: 'Pear' },
+          { title: 'Rectangle', value: 'Rectangle' },
+          { title: 'Round', value: 'Round' },
+          { title: 'Oval', value: 'Oval' },
+          { title: 'Oblong', value: 'Oblong' },
+          { title: 'Diamond', value: 'Diamond' },
+        ],
       },
     },
   ],
