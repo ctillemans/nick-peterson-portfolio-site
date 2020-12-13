@@ -19,6 +19,15 @@ async function turnHaircutsIntoPages({ graphql, actions }) {
   `);
   console.log(data);
 
+  // figure out the number of pages we need;
+  numberOfCuts = data.cuts.nodes.length;
+
+  paginationSize = parseInt(process.env.GATSBY_PAGE_SIZE);
+
+  console.log(
+    `number of Cuts: ${numberOfCuts} size of pagination: ${paginationSize}`
+  );
+
   // map over each pizza and create a page for each
 
   data.cuts.nodes.forEach((cut) => {

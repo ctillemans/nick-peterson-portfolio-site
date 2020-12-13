@@ -10,7 +10,7 @@ const testimonials = [
   {
     name: 'Scott',
     testimonial:
-      'Professional. Talented. Personable. What mroe can you ask for in a barber?',
+      'Professional. Talented. Personable. What more can you ask for in a barber?',
   },
   {
     name: 'Max',
@@ -20,6 +20,11 @@ const testimonials = [
     name: 'Miles',
     testimonial:
       'I always look forward to getting a fresh cut from Nick. Good times and lots of laughs.',
+  },
+  {
+    name: 'Ryder',
+    testimonial:
+      'Nick has great style and knows what to suggest for my hair type and head shape.',
   },
 ];
 
@@ -54,6 +59,8 @@ export default function TextCarousel() {
     transitionRef.current = slideTransition;
     autoPlayRef.current = nextSlide;
   });
+  let interval = null;
+  let setTimer = null;
 
   useEffect(() => {
     const transitionToActiveSlides = () => {
@@ -66,11 +73,21 @@ export default function TextCarousel() {
       'transitionend',
       transitionToActiveSlides
     );
-    const interval = setInterval(autoPlay, 5000);
+    setTimer = () => {
+      return (interval = setInterval(autoPlay, 5000));
+    };
+
+    setTimer();
     return () => {
       window.removeEventListener('transitionend', transitionEnd);
     };
   }, []);
+  // TODO: find a way to rework this section to have the arrows reset the timer.
+  // click
+  // reset timer
+  // change state
+  // restart timer
+
   useEffect(() => {
     if (transition === 0) setState({ ...state, transition: 2000 });
   }, [transition]);
@@ -143,8 +160,10 @@ export default function TextCarousel() {
         })}
       </Slides>
       <DotNav slides={testimonials} activeIndex={activeIndex} />
-      <Arrow direction='right' handleClick={nextSlide} />
-      <Arrow direction='left' handleClick={prevSlide} />
+      {/* <Arrow direction='right' handleClick={nextSlide} /> */}
+      {/* <Arrow direction='left' handleClick={prevSlide} /> */}
+      {/* arrows hidden until logic gets worked out for clearing the interval. 
+      refererence : https://stackoverflow.com/questions/56952038/how-to-reset-setinterval-function-using-react-hooks */}
     </CarouselStyles>
   );
 }

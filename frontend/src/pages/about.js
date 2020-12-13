@@ -72,6 +72,7 @@ const HalfHeroImg = styled.div`
   }
 `;
 export default function about() {
+  console.log(process.env.GATSBY_PAGE_SIZE);
   return (
     <section>
       <AnimateIn>
