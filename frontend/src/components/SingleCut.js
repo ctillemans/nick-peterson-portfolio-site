@@ -98,7 +98,6 @@ export default function SingleCut({ cut }) {
     <Link to={`/${cut.haircutTitle}`}>
       <CutCardContainer
         className='card'
-        image={cut.image1.asset.fluid.src}
         onMouseEnter={() => {
           setHovered(true);
         }}
@@ -107,7 +106,10 @@ export default function SingleCut({ cut }) {
         }}
         hovered={isHovered}
       >
-        <CutImageBackground src={cut.image1.asset.url} hovered={isHovered} />
+        <CutImageBackground
+          src={cut.haircutImages[0].asset.url}
+          hovered={isHovered}
+        />
         <CutContent hovered={isHovered}>
           <h1>{cut.haircutTitle}</h1>
           <p>{cut.description}</p>

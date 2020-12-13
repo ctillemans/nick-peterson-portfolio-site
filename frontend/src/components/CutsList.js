@@ -14,6 +14,8 @@ const CutListStyles = styled.div`
 `;
 
 export default function CutsList({ cuts }) {
+  console.log(cuts);
+
   return (
     <CutListStyles>
       {cuts.nodes.map((cut) => {

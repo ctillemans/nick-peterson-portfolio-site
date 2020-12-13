@@ -17,10 +17,14 @@ export const cutsQuery = graphql`
   query cutsQuery {
     cuts: allSanityHaircut {
       nodes {
+        description
+        date
+        hairType
+        hair_thickness
         id
         haircutTitle
-        description
-        image1 {
+        head_shape
+        haircutImages {
           asset {
             url
             fluid(maxWidth: 500) {
@@ -35,3 +39,20 @@ export const cutsQuery = graphql`
     }
   }
 `;
+
+// nodes {
+//   id
+//   haircutTitle
+//   description
+//   image1 {
+//     asset {
+//       url
+//       fluid(maxWidth: 500) {
+//         ...GatsbySanityImageFluid
+//       }
+//       fixed {
+//         ...GatsbySanityImageFixed
+//       }
+//     }
+//   }
+// }
