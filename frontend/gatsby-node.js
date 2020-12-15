@@ -10,13 +10,29 @@ async function turnHaircutsIntoPages({ graphql, actions }) {
     query {
       cuts: allSanityHaircut {
         nodes {
+          description
+          date
+          hairType
+          hair_thickness
           id
           haircutTitle
-          description
+          head_shape
+          haircutImages {
+            asset {
+              fixed {
+                base64
+              }
+              fluid {
+                base64
+              }
+              url
+            }
+          }
         }
       }
     }
   `);
+
   console.log(data);
 
   // figure out the number of pages we need;

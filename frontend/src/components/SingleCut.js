@@ -94,6 +94,7 @@ const CutContent = styled.div`
 
 export default function SingleCut({ cut }) {
   const [isHovered, setHovered] = useState(false);
+
   return (
     <Link to={`/${cut.haircutTitle}`}>
       <CutCardContainer
@@ -112,6 +113,7 @@ export default function SingleCut({ cut }) {
         />
         <CutContent hovered={isHovered}>
           <h1>{cut.haircutTitle}</h1>
+          <p>{`${cut.hairType} | ${cut.hair_thickness} | ${cut.head_shape}`}</p>
           <p>{cut.description}</p>
         </CutContent>
       </CutCardContainer>
