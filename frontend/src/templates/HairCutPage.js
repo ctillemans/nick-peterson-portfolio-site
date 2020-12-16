@@ -16,7 +16,10 @@ const ImageContainer = styled.div`
   display: flex;
   width: 50vw;
   height: 500px;
-  background: black;
+  background: url(${(props) => props.image});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const CutCardContainer = styled.div`
@@ -33,12 +36,13 @@ export default function singleCutPage({ pageContext }) {
   const { haircut } = pageContext;
   return (
     <CutContainer>
-      <ImageContainer />
+      <ImageContainer image={haircut.haircutImages[0].asset.url} />
 
       <CutCardContainer>
         <h1>{haircut.haircutTitle}</h1>
-        <p>Short | clean-cut | timeless</p>
         <p>{haircut.description}</p>
+        <h2>Type of Hair</h2>
+        <p>{`${haircut.hairType} | ${haircut.hair_thickness} | ${haircut.head_shape}`}</p>
         <div>
           <p>
             Dropdowns could go here like the faq reference I had with the
