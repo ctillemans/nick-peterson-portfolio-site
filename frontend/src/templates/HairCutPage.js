@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 // haircut card
 // title
@@ -34,14 +35,18 @@ const CutCardContainer = styled.div`
 export default function singleCutPage({ pageContext }) {
   console.log(pageContext);
   const { haircut } = pageContext;
+
+  const [activeImage, setActiveImage] = useState(
+    haircut.haircutImages[0].asset.url
+  );
+
   return (
     <CutContainer>
-      <ImageContainer image={haircut.haircutImages[0].asset.url} />
+      <ImageContainer image={activeImage} />
 
       <CutCardContainer>
         <h1>{haircut.haircutTitle}</h1>
-        <p>{haircut.description}</p>
-        <h2>Type of Hair</h2>
+        <p>{haircut.description}</p>x
         <p>{`${haircut.hairType} | ${haircut.hair_thickness} | ${haircut.head_shape}`}</p>
         <div>
           <p>
