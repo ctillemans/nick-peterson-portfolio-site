@@ -9,12 +9,15 @@ const CutContainer = styled.div`
   position: relative;
   margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const ImageContainer = styled.div`
+  margin: 2rem;
+  position: relative;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 50vw;
   height: 500px;
   background: url(${(props) => props.image});
@@ -24,15 +27,34 @@ const ImageContainer = styled.div`
 `;
 
 const CutCardContainer = styled.div`
-  padding: 0 5rem;
+  margin: 0 5rem;
   width: 50vw;
   height: 80vh;
   display: flex;
   flex-direction: column;
 `;
+const ThumbnailsContainer = styled.div`
+  position: absolute;
+  bottom: calc(-100px - 1rem);
+  left: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ThumbnailImage = styled.div`
+  margin: 0 1rem;
+  height: 100%;
+  width: 100px;
+  background: url(${(props) => props.image});
+  background-size: cover;
+  background-position: center;
+`;
 // TODO: build this out to be like the testimonials container.
 
-export default function singleCutPage({ pageContext }) {
+export default function SingleCutPage({ pageContext }) {
   console.log(pageContext);
   const { haircut } = pageContext;
 
@@ -42,7 +64,18 @@ export default function singleCutPage({ pageContext }) {
 
   return (
     <CutContainer>
-      <ImageContainer image={activeImage} />
+      <ImageContainer image={activeImage}>
+        <ThumbnailsContainer>
+          {haircut.haircutImages.map((image, index) => {
+            return (
+              <ThumbnailImage
+                key={`thumbnail-${index}`}
+                image={image.asset.url}
+              />
+            );
+          })}
+        </ThumbnailsContainer>
+      </ImageContainer>
 
       <CutCardContainer>
         <h1>{haircut.haircutTitle}</h1>
