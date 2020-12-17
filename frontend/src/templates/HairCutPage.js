@@ -51,6 +51,11 @@ const ThumbnailImage = styled.div`
   background: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
+  transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+  :hover {
+    transform: scale(1.2);
+  }
 `;
 // TODO: build this out to be like the testimonials container.
 
@@ -59,18 +64,26 @@ export default function SingleCutPage({ pageContext }) {
   const { haircut } = pageContext;
 
   const [activeImage, setActiveImage] = useState(
-    haircut.haircutImages[0].asset.url
+    // haircut.haircutImages[0].asset.url
+    0
   );
+  const handleThumbnailClick = (index) => {
+    setActiveImage(index);
+  };
 
   return (
     <CutContainer>
-      <ImageContainer image={activeImage}>
+      <ImageContainer image={haircut.haircutImages[activeImage].asset.url}>
         <ThumbnailsContainer>
           {haircut.haircutImages.map((image, index) => {
             return (
               <ThumbnailImage
                 key={`thumbnail-${index}`}
+                index={index}
                 image={image.asset.url}
+                onClick={() => {
+                  handleThumbnailClick(index);
+                }}
               />
             );
           })}
