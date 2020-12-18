@@ -76,7 +76,7 @@ const NavLinkList = styled.ul`
   @media (max-width: 800px) {
     z-index: 100;
     position: absolute;
-    left: 0;
+    left: -100;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
